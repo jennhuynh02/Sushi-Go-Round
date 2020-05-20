@@ -1,11 +1,21 @@
 #Sushi-Go-Round {
   text-align: -webkit-center;
   background-color: lightgoldenrodyellow;
+}
+
+#banner{
   font-family: fantasy;
-  font-size: 30px;
+  font-size: 50px;
+}
+
+#uwu-logo {
+  height: 150px;
+}
+
+#gif-logo {
+  height: 150px;
 }
 
 #game-canvas {
-  background: radial-gradient(paleturquoise, transparent);
   border: solid 1px grey;
 }

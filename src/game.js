@@ -15,7 +15,7 @@ export default class SushiGoRound {
     setInterval(() => {
       this.board.step();
       this.animate();
-    }, 1000);
+    }, 1500);
     // }, 25);
   }
 
