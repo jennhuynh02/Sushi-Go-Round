@@ -6,3 +6,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new SushiGoRound(canvas);
   console.log('Webpack is working!');
 });
+

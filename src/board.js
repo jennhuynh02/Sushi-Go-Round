@@ -110,6 +110,7 @@ export default class Board {
     this.drawSushiMonster(context);
   }
 
+
   step() {
     // pos[0-left/right, 1-up/down]
     // pos[0] stays between 100LEFT - 800RIGHT X-axis
@@ -129,7 +130,6 @@ export default class Board {
       } else if (sushi.pos[1] === 800) {
         sushi.pos[0] -= 100;
       }
-
     });
 
     this.chilis.forEach((chili) => {
@@ -141,6 +141,24 @@ export default class Board {
         chili.pos[1] += 100;
       } else if (chili.pos[1] === 800) {
         chili.pos[0] -= 100;
+      }
+    });
+
+    // event listener for key strokes
+    document.addEventListener('keydown', (event) => {
+      if (event.keyCode === 37) {
+        event.preventDefault();
+        // alert('Left arrow of keyboard was smashed');
+        this.sushiMonster[0].pos[0] -= 10;
+      } else if (event.keyCode === 38) {
+        this.sushiMonster[0].pos[1] -= 10;
+        // move the SushiMonster to up
+      } else if (event.keyCode === 39) {
+        this.sushiMonster[0].pos[0] += 10;
+        // move the SushiMonster to right
+      } else if (event.keyCode === 40) {
+        this.sushiMonster[0].pos[1] += 10;
+      // move the SushiMonster to down
       }
     });
   }
