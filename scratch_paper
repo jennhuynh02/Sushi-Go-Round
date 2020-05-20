@@ -1,0 +1,94 @@
+10x10 (1000px by 1000px) board display = [
+  [_,_,_,_,_,_,_,_,_,_],
+  [_,S,C,S,S,C,S,S,C,_], Y100
+  [_,C,_,_,_,_,_,_,S,_],
+  [_,S,_,_,_,_,_,_,C,_],
+  [_,S,_,_,_,_,_,_,S,_],
+  [_,C,_,_,_,_,_,_,S,_],
+  [_,S,_,_,_,_,_,_,C,_],
+  [_,S,_,_,_,_,_,_,S,_],
+  [_,C,S,S,C,S,S,C,S,_], Y800
+  [_,_,_,_,_,_,_,_,_,_]
+] X100 ---------> X800
+
+28 slots on conveyor belt = 18 sushis + 10 chilis
+pos[0-left/right, 1-up/down]
+pos[0] stays between 100LEFT - 800RIGHT X-axis
+pos[1] stays between 100TOP - 800BOTTOM Y-axis
+
+CHILI SEEDS
+new Chili([200, 100]),1 (starts at top left *CLOCKWISE*)
+new Chili([500, 100]),2
+new Chili([800, 100]),3
+new Chili([800, 300]),4
+new Chili([800, 600]),5
+new Chili([700, 800]),6
+new Chili([400, 800]),7
+new Chili([100, 800]),8
+new Chili([100, 200]),9
+new Chili([100, 500]),10
+
+
+ALL CONVEYOR BELT ITEMS
+TOP LEFT TO RIGHT
+new Sushi([100, 100])
+new Chili([200, 100]),1
+new Sushi([300, 100])
+new Sushi([400, 100])
+new Chili([500, 100]),2
+new Sushi([600, 100])
+new Sushi([700, 100])
+new Chili([800, 100]),3
+
+TOP RIGHT TO DOWN
+new Sushi([800, 200])
+new Chili([800, 300]),4
+new Sushi([800, 400])
+new Sushi([800, 500])
+new Chili([800, 600]),5
+new Sushi([800, 700])
+new Sushi([800, 800])
+
+BOTTOM RIGHT TO LEFT
+new Chili([700, 800]),6
+new Sushi([600, 800])
+new Sushi([500, 800])
+new Chili([400, 800]),7
+new Sushi([300, 800])
+new Sushi([200, 800])
+
+BOTTOM LEFT TO TOP
+new Chili([100, 200]),9
+new Sushi([100, 300])
+new Sushi([100, 400])
+new Chili([100, 500]),10
+new Sushi([100, 600])
+new Sushi([100, 700])
+new Chili([100, 800]),8
+
+
+SUSHI SEEDS
+// new Sushi([100, 100]),
+// new Sushi([300, 100]),
+// new Sushi([400, 100]),
+// new Sushi([600, 100]),
+// new Sushi([700, 100]),
+
+
+// new Sushi([800, 200]),
+// new Sushi([800, 400]),
+// new Sushi([800, 500]),
+// new Sushi([800, 700]),
+// new Sushi([800, 800]),
+
+
+// new Sushi([600, 800]),
+// new Sushi([500, 800]),
+// new Sushi([300, 800]),
+// new Sushi([200, 800]),
+
+
+// new Sushi([100, 300]),
+// new Sushi([100, 400]),
+// new Sushi([100, 600]),
+// new Sushi([100, 700]),

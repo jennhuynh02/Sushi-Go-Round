@@ -2,17 +2,16 @@ import Sushi from './sushi';
 import Chili from './chili';
 // 10x10 (1000px by 1000px) board display = [
 //   [_,_,_,_,_,_,_,_,_,_],
-//   [_,S,S,S,S,S,S,S,S,_],
+//   [_,S,C,S,S,C,S,S,C,_], Y100
+//   [_,C,_,_,_,_,_,_,S,_],
+//   [_,S,_,_,_,_,_,_,C,_],
 //   [_,S,_,_,_,_,_,_,S,_],
+//   [_,C,_,_,_,_,_,_,S,_],
+//   [_,S,_,_,_,_,_,_,C,_],
 //   [_,S,_,_,_,_,_,_,S,_],
-//   [_,S,_,_,_,_,_,_,S,_],
-//   [_,S,_,_,_,_,_,_,S,_],
-//   [_,S,_,_,_,_,_,_,S,_],
-//   [_,S,_,_,_,_,_,_,S,_],
-//   [_,S,S,S,S,S,S,S,S,_],
+//   [_,C,S,S,C,S,S,C,S,_], Y800
 //   [_,_,_,_,_,_,_,_,_,_]
-// ]
-// 28 slots on conveyor belt = 18 sushis + 10 chilis
+// ] X100 ---------> X800
 
 export default class Board {
   constructor(dimensions) {
@@ -22,6 +21,7 @@ export default class Board {
     this.rows = 10;
     // tile is for grid on board
     this.tileSize = 100;
+    this.numSushis = 16;
     this.sushis = [];
     this.chilis = [];
     this.addSushi();
@@ -42,12 +42,47 @@ export default class Board {
     ));
   }
 
+  // initial seed x,y positions for sushi
   addSushi() {
-    this.sushis.push(new Sushi([100, 500]));
+    this.sushis.push(...[
+      new Sushi([100, 100]),
+      new Sushi([300, 100]),
+      new Sushi([400, 100]),
+      new Sushi([600, 100]),
+      new Sushi([700, 100]),
+
+      new Sushi([800, 200]),
+      new Sushi([800, 400]),
+      new Sushi([800, 500]),
+      new Sushi([800, 700]),
+      new Sushi([800, 800]),
+
+      new Sushi([600, 800]),
+      new Sushi([500, 800]),
+      new Sushi([300, 800]),
+      new Sushi([200, 800]),
+
+      new Sushi([100, 300]),
+      new Sushi([100, 400]),
+      new Sushi([100, 600]),
+      new Sushi([100, 700]),
+    ]);
   }
 
+  // initial seed x,y positions for chili
   addChilis() {
-    this.chilis.push(new Chili([100, 300]));
+    this.chilis.push(...[
+      new Chili([200, 100]),
+      new Chili([500, 100]),
+      new Chili([800, 100]),
+      new Chili([800, 300]),
+      new Chili([800, 600]),
+      new Chili([700, 800]),
+      new Chili([400, 800]),
+      new Chili([100, 800]),
+      new Chili([100, 200]),
+      new Chili([100, 500]),
+    ]);
   }
 
   // context is the 2D canvas
@@ -67,13 +102,28 @@ export default class Board {
     this.sushis.forEach((sushi) => {
       // subtracting to go upwards until pos[1] reaches 100, then we move to the right
       if ((sushi.pos[0] === 100) && (sushi.pos[1] !== 100)) {
+      // pos[100,200]
+      // goes to pos[100,100]
         sushi.pos[1] -= 100;
+      } else if ((sushi.pos[1] === 100) && (sushi.pos[0] !== 800)) {
+        sushi.pos[0] += 100;
+      } else if ((sushi.pos[0] === 800) && (sushi.pos[1] !== 800)) {
+        sushi.pos[1] += 100;
+      } else if (sushi.pos[1] === 800) {
+        sushi.pos[0] -= 100;
       }
+
     });
 
     this.chilis.forEach((chili) => {
       if ((chili.pos[0] === 100) && (chili.pos[1] !== 100)) {
         chili.pos[1] -= 100;
+      } else if ((chili.pos[1] === 100) && (chili.pos[0] !== 800)) {
+        chili.pos[0] += 100;
+      } else if ((chili.pos[0] === 800) && (chili.pos[1] !== 800)) {
+        chili.pos[1] += 100;
+      } else if (chili.pos[1] === 800) {
+        chili.pos[0] -= 100;
       }
     });
   }
