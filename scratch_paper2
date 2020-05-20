@@ -5,7 +5,8 @@ CONVEYOR BELT MOVES []
 [x, 800] x = 100-->700 (7x) √
 [100, y] y = 200-->700 (6x) √
 
-[ 100, 100 ],
+RESULT:
+  [ 100, 100 ],
   [ 200, 100 ],
   [ 300, 100 ],
   [ 400, 100 ],
@@ -54,5 +55,5 @@ function () {
     for (let y = 200; y <= 700; y+=100) {
       moves.push([100, y])
     }
-  return moves;
+  moves;
 }

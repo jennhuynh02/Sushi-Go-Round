@@ -1,0 +1,66 @@
+To generate conveyor belt items...
+
+this.possiblePos = [all the positions on the conveyor belt]
+
+18 sushis
+10 chilis
+
+
+#make a copy of all possible positions, use a random pos, and delete from array...
+allConveyorBeltItems = [18 sushi + 10 chilis]
+
+
+addItemsOntoConveyorBelt () {
+  const orderedPositions = this.possiblePos
+  const scrambledPositions = [];
+  allConveyorBeltItems = [];
+
+  while (orderedPositions.length !== 0) {
+    let random = Math.floor(Math.random() * Math.floor(orderedPositions.length));
+    scrambledPositions.push(orderedPositions[random])
+    orderedPositions.splice(random, 1)
+  }
+  
+  for (let i = 0; i < 18; i++) {
+    allConveyorBeltItems.push(new Sushi(scrambledPositions[i]))
+  }
+
+  for (let i = 18; i < 28; i++) {
+    allConveyorBeltItems.push(new Chili(scrambledPositions[i]))
+  }
+
+  allConveyorBeltItems
+}
+
+
+const possiblePos = 
+[
+  [ 100, 100 ],
+  [ 200, 100 ],
+  [ 300, 100 ],
+  [ 400, 100 ],
+  [ 500, 100 ],
+  [ 600, 100 ],
+  [ 700, 100 ],
+  [ 800, 100 ],
+  [ 800, 200 ],
+  [ 800, 300 ],
+  [ 800, 400 ],
+  [ 800, 500 ],
+  [ 800, 600 ],
+  [ 800, 700 ],
+  [ 800, 800 ],
+  [ 100, 800 ],
+  [ 200, 800 ],
+  [ 300, 800 ],
+  [ 400, 800 ],
+  [ 500, 800 ],
+  [ 600, 800 ],
+  [ 700, 800 ],
+  [ 100, 200 ],
+  [ 100, 300 ],
+  [ 100, 400 ],
+  [ 100, 500 ],
+  [ 100, 600 ],
+  [ 100, 700 ]
+]

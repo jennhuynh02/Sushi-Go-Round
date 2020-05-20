@@ -26,7 +26,6 @@ export default class Board {
     this.addChilis();
     this.addSushiMonster();
     this.addTiles();
-
   }
 
   drawSushis(context) {
@@ -50,7 +49,6 @@ export default class Board {
 
   drawTiles(context) {
     const { tiles } = this;
-    // tiles[0].createTile(context);
     tiles.forEach((tile) => (
       tile.createTile(context)
     ));
