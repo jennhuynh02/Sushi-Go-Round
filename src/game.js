@@ -13,9 +13,13 @@ export default class SushiGoRound {
     // setTimeout(() => {
     this.animate();
     setInterval(() => {
-      this.board.step();
+    // this is how fast monster moves
       this.animate();
-    }, 1500);
+    }, 50);
+    setInterval(() => {
+    // this is how fast convery belt items move
+      this.board.step();
+    }, 1000);
     // }, 25);
   }
 

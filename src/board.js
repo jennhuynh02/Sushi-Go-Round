@@ -21,34 +21,12 @@ export default class Board {
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
-    this.stepSize = 100;
     this.allPossiblePos();
     this.addSushi();
     this.addChilis();
     this.addSushiMonster();
     this.addTiles();
 
-    document.addEventListener('keydown', (event) => {
-      const monster = this.sushiMonster[0];
-      const horizontal = monster.pos[0];
-      const vertical = monster.pos[1];
-
-      if (event.keyCode === 37) {
-        // alert('Left arrow of keyboard was smashed');
-        if (horizontal > 200) monster.pos[0] -= this.stepSize;
-      } else if (event.keyCode === 38) {
-        event.preventDefault();
-        if (vertical > 200) monster.pos[1] -= this.stepSize;
-        // move the SushiMonster to up
-      } else if (event.keyCode === 39) {
-        if (horizontal <= 600) monster.pos[0] += this.stepSize;
-        // move the SushiMonster to right
-      } else if (event.keyCode === 40) {
-        if (vertical < 700) monster.pos[1] += this.stepSize;
-        event.preventDefault();
-      // move the SushiMonster to down
-      }
-    });
   }
 
   drawSushis(context) {
