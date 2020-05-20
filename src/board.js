@@ -59,12 +59,22 @@ export default class Board {
   }
 
   step() {
+    // pos[0-left/right, 1-up/down]
+    // pos[0] stays between 100LEFT - 800RIGHT X-axis
+    // pos[1] stays between 100TOP - 800BOTTOM Y-axis
     // we are moving the position of the sushi upwards (Test)
+    // render if statement, if pos[0] reaches
     this.sushis.forEach((sushi) => {
-      sushi.pos[1] -= 100;
+      // subtracting to go upwards until pos[1] reaches 100, then we move to the right
+      if ((sushi.pos[0] === 100) && (sushi.pos[1] !== 100)) {
+        sushi.pos[1] -= 100;
+      }
     });
+
     this.chilis.forEach((chili) => {
-      chili.pos[1] -= 100;
+      if ((chili.pos[0] === 100) && (chili.pos[1] !== 100)) {
+        chili.pos[1] -= 100;
+      }
     });
   }
 
