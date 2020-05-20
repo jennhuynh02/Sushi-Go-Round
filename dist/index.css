@@ -1,0 +1,8 @@
+#Sushi-Go-Round {
+  text-align: -webkit-center;
+}
+
+#game-canvas {
+  background: radial-gradient(paleturquoise, transparent);
+  border: solid 1px grey;
+}
