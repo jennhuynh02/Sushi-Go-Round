@@ -1,5 +1,8 @@
 #Sushi-Go-Round {
   text-align: -webkit-center;
+  background-color: lightgoldenrodyellow;
+  font-family: fantasy;
+  font-size: 30px;
 }
 
 #game-canvas {

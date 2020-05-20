@@ -14,13 +14,6 @@ export default class SushiMonster {
   // [x,x,x,x,x,x,]
   // [x,x,x,x,x,x,]
 
-  // MOVE DIRS = {
-//   up: [0,-100],
-//   left: [-100,0],
-//   right: [100,0],
-//   down: [0,100],
-// };
-
   createSushiMonster(context) {
     context.drawImage(SUSHI_MONSTER_IMAGE, this.pos[0], this.pos[1], 100, 100);
   }
