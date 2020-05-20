@@ -1,5 +1,6 @@
 import Sushi from './sushi';
 import Chili from './chili';
+import SushiMonster from './sushi_monster';
 // 10x10 (1000px by 1000px) board display = [
 //   [_,_,_,_,_,_,_,_,_,_],
 //   [_,S,C,S,S,C,S,S,C,_], Y100
@@ -13,6 +14,9 @@ import Chili from './chili';
 //   [_,_,_,_,_,_,_,_,_,_]
 // ] X100 ---------> X800
 
+const PLATTERIMAGE = new Image();
+PLATTERIMAGE.src = '../assets/platter.png';
+
 export default class Board {
   constructor(dimensions) {
     // 1000px x 1000px
@@ -21,11 +25,14 @@ export default class Board {
     this.rows = 10;
     // tile is for grid on board
     this.tileSize = 100;
-    this.numSushis = 16;
+    this.numSushis = 18;
+    this.numChilis = 10;
     this.sushis = [];
     this.chilis = [];
+    this.sushiMonster = [];
     this.addSushi();
     this.addChilis();
+    this.addSushiMonster();
   }
 
   drawSushis(context) {
@@ -40,6 +47,15 @@ export default class Board {
     chilis.forEach((chili) => (
       chili.createChili(context)
     ));
+  }
+
+  drawSushiMonster(context) {
+    const { sushiMonster } = this;
+    sushiMonster[0].createSushiMonster(context);
+  }
+
+  addSushiMonster() {
+    this.sushiMonster.push(new SushiMonster([500, 500]));
   }
 
   // initial seed x,y positions for sushi
@@ -91,6 +107,7 @@ export default class Board {
     this.drawBoard(context);
     this.drawSushis(context);
     this.drawChilis(context);
+    this.drawSushiMonster(context);
   }
 
   step() {
@@ -132,11 +149,7 @@ export default class Board {
     const { tileSize } = this;
 
     function createPlatter(x, y) {
-      const img = new Image();
-      img.src = '../assets/platter.webp';
-      img.onload = () => {
-        context.drawImage(img, x, y, 100, 100);
-      };
+      context.drawImage(PLATTERIMAGE, x, y, 100, 100);
     }
 
     // creates tile for construction of grid
