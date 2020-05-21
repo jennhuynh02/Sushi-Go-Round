@@ -1,0 +1,53 @@
+Game Logic
+
+Need a hunger satisfaction bar (red 50% and green 100%)
+
+1.  Create a class SATISFACTION LEVEL BAR
+
+[10,20,30,40,50%] <-- RED && GREEN--> [60,70,80,90,100%]
+
+
+2.  Event Handler ("spacebar" keydown eats sushi/chili)
+
+0px
+
+Y axis 40px bar -------> length = 4 tiles long
+
+400/10 = 40px for every 10% of the scorebar
+Y axis 60px bar -------> (X-axis begins at 300px, ends at 700px)
+
+100px
+
+const scorebarXaxis = [];
+for (let i = 260; i < 700; i += 40) {
+  scorebarXaxis.push(i)
+  scorebarXaxis
+}
+
+export default class ScoreBar {
+  constructor(num) {
+    this.num = num;
+    this.scorebarX = [];
+  }
+
+[ 260 = 0, 300 = 10%[1], 340, 380, 420, 460, 500, 540, 580, 620, 660 = 100%[10] ]
+> x.length
+
+num score = 
+
+1st index (fills bar to 10% - 300px start)
+
+10th index (fills bar to 100% - 660px to 700px end)
+
+  drawScore(context) {
+    const { num, scorebar } = this;
+
+  if num < 6 {
+    context.fillRect(scorebar[x], 40, 40, 20);
+    context.fillStyle="red";
+  } else {
+    context.fillRect(scorebar[x], 40, 40, 20);
+    context.fillStyle="green";    
+}
+
+}

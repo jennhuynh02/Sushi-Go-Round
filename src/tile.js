@@ -8,6 +8,7 @@ export default class Tile {
 
   createTile(context) {
     const { pos } = this;
+    context.fillStyle = 'black';
     context.fillRect(pos[0], pos[1], 100, 100);
   }
 }

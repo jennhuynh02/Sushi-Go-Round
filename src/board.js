@@ -2,6 +2,7 @@ import Sushi from './sushi';
 import Chili from './chili';
 import SushiMonster from './sushi_monster';
 import Tile from './tile';
+import ScoreBar from './scorebar';
 
 const PLATTERIMAGE = new Image();
 PLATTERIMAGE.src = '../assets/platter.png';
@@ -20,12 +21,13 @@ export default class Board {
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
+    this.score = 5;
+    this.scorebar = [];
     this.allPossiblePos();
-    // this.addSushi();
-    // this.addChilis();
     this.addItemsOntoConveyorBelt();
     this.addSushiMonster();
     this.addTiles();
+    this.addScoreBar();
   }
 
   drawConveyorBeltItems(context) {
@@ -37,7 +39,12 @@ export default class Board {
 
   drawSushiMonster(context) {
     const { sushiMonster } = this;
-    sushiMonster[0].createSushiMonster(context);
+    sushiMonster[0].drawSushiMonster(context);
+  }
+
+  drawScoreBar(context) {
+    const { scorebar } = this;
+    scorebar[0].drawScore(context);
   }
 
   drawTiles(context) {
@@ -49,6 +56,12 @@ export default class Board {
 
   addSushiMonster() {
     this.sushiMonster.push(new SushiMonster([500, 500]));
+  }
+
+  addScoreBar() {
+    const { score } = this;
+    console.log(score);
+    this.scorebar.push(new ScoreBar(score));
   }
 
   allPossiblePos() {
@@ -74,7 +87,6 @@ export default class Board {
 
   addTiles() {
     const { possiblePos } = this;
-    console.log(possiblePos);
     possiblePos.forEach((el) => (
       this.tiles.push(new Tile(el))
     ));
@@ -98,8 +110,6 @@ export default class Board {
     for (let i = 18; i < 28; i += 1) {
       allConveyorBeltItems.push(new Chili(scrambledPositions[i]));
     }
-    console.log("after conveyor belt");
-    console.log(this.possiblePos);
   }
 
   // context is the 2D canvas
@@ -110,23 +120,23 @@ export default class Board {
 
     this.drawConveyorBeltItems(context);
     this.drawSushiMonster(context);
+    this.drawScoreBar(context);
   }
 
 
   step() {
-  this.allConveyorBeltItems.forEach((item) => {
+    this.allConveyorBeltItems.forEach((item) => {
     // subtracting to go upwards until pos[1] reaches 100, then we move to the right
-    if ((item.pos[0] === 100) && (item.pos[1] !== 100)) {
-      item.pos[1] -= 100;
-    } else if ((item.pos[1] === 100) && (item.pos[0] !== 800)) {
-      item.pos[0] += 100;
-    } else if ((item.pos[0] === 800) && (item.pos[1] !== 800)) {
-      item.pos[1] += 100;
-    } else if (item.pos[1] === 800) {
-      item.pos[0] -= 100;
-    }
-  });
-
+      if ((item.pos[0] === 100) && (item.pos[1] !== 100)) {
+        item.pos[1] -= 100;
+      } else if ((item.pos[1] === 100) && (item.pos[0] !== 800)) {
+        item.pos[0] += 100;
+      } else if ((item.pos[0] === 800) && (item.pos[1] !== 800)) {
+        item.pos[1] += 100;
+      } else if (item.pos[1] === 800) {
+        item.pos[0] -= 100;
+      }
+    });
   }
 
   drawBoard(context) {

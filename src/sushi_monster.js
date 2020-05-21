@@ -33,7 +33,7 @@ export default class SushiMonster {
     });
   }
 
-  createSushiMonster(context) {
+  drawSushiMonster(context) {
     context.drawImage(SUSHI_MONSTER_IMAGE, this.pos[0], this.pos[1], 100, 100);
   }
 }
