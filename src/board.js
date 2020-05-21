@@ -55,13 +55,10 @@ export default class Board {
   }
 
   drawTiles(context) {
-
     const { tiles } = this;
-    console.log(tiles.length)
     tiles.forEach((tile) => (
       tile.createTile(context)
-      ));
-      console.log(tiles.length)
+    ));
   }
 
   addSushiMonster() {
@@ -70,8 +67,6 @@ export default class Board {
 
   addScoreBar() {
     const { score } = this;
-    console.log('score');
-    console.log(score[0]);
     this.scorebar.push(new ScoreBar(score[0]));
   }
 
