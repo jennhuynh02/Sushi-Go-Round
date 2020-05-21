@@ -13,7 +13,7 @@ allConveyorBeltItems = [18 sushi + 10 chilis]
 addItemsOntoConveyorBelt () {
   const orderedPositions = this.possiblePos
   const scrambledPositions = [];
-  allConveyorBeltItems = [];
+  allConveyorBeltItems = this.allConveyorBeltItems;
 
   while (orderedPositions.length !== 0) {
     let random = Math.floor(Math.random() * Math.floor(orderedPositions.length));
@@ -64,3 +64,16 @@ const possiblePos =
   [ 100, 600 ],
   [ 100, 700 ]
 ]
+
+this.allConveyorBeltItems.forEach((item) => {
+  // subtracting to go upwards until pos[1] reaches 100, then we move to the right
+  if ((item.pos[0] === 100) && (item.pos[1] !== 100)) {
+    item.pos[1] -= 100;
+  } else if ((item.pos[1] === 100) && (item.pos[0] !== 800)) {
+    item.pos[0] += 100;
+  } else if ((item.pos[0] === 800) && (item.pos[1] !== 800)) {
+    item.pos[1] += 100;
+  } else if (item.pos[1] === 800) {
+    item.pos[0] -= 100;
+  }
+});

@@ -6,7 +6,7 @@ export default class Chili {
     this.pos = pos;
   }
 
-  createChili(context) {
+  draw(context) {
     context.drawImage(CHILI_IMAGE, this.pos[0], this.pos[1], 100, 100);
   }
   // creates chili pieces

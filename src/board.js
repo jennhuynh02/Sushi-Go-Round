@@ -16,29 +16,22 @@ export default class Board {
     this.tileSize = 100;
     this.numSushis = 18;
     this.numChilis = 10;
-    this.sushis = [];
-    this.chilis = [];
+    this.allConveyorBeltItems = [];
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
     this.allPossiblePos();
-    this.addSushi();
-    this.addChilis();
+    // this.addSushi();
+    // this.addChilis();
+    this.addItemsOntoConveyorBelt();
     this.addSushiMonster();
     this.addTiles();
   }
 
-  drawSushis(context) {
-    const { sushis } = this;
-    sushis.forEach((sushi) => (
-      sushi.createSushi(context)
-    ));
-  }
-
-  drawChilis(context) {
-    const { chilis } = this;
-    chilis.forEach((chili) => (
-      chili.createChili(context)
+  drawConveyorBeltItems(context) {
+    const { allConveyorBeltItems } = this;
+    allConveyorBeltItems.forEach((item) => (
+      item.draw(context)
     ));
   }
 
@@ -87,47 +80,26 @@ export default class Board {
     ));
   }
 
-  // initial seed x,y positions for sushi
-  addSushi() {
-    this.sushis.push(...[
-      new Sushi([100, 100]),
-      new Sushi([300, 100]),
-      new Sushi([400, 100]),
-      new Sushi([600, 100]),
-      new Sushi([700, 100]),
+  addItemsOntoConveyorBelt() {
+    const orderedPositions = this.possiblePos.slice(0);
+    const scrambledPositions = [];
+    const { allConveyorBeltItems } = this;
 
-      new Sushi([800, 200]),
-      new Sushi([800, 400]),
-      new Sushi([800, 500]),
-      new Sushi([800, 700]),
-      new Sushi([800, 800]),
+    while (orderedPositions.length !== 0) {
+      const random = Math.floor(Math.random() * Math.floor(orderedPositions.length));
+      scrambledPositions.push(orderedPositions[random]);
+      orderedPositions.splice(random, 1);
+    }
 
-      new Sushi([600, 800]),
-      new Sushi([500, 800]),
-      new Sushi([300, 800]),
-      new Sushi([200, 800]),
+    for (let i = 0; i < 18; i += 1) {
+      allConveyorBeltItems.push(new Sushi(scrambledPositions[i]));
+    }
 
-      new Sushi([100, 300]),
-      new Sushi([100, 400]),
-      new Sushi([100, 600]),
-      new Sushi([100, 700]),
-    ]);
-  }
-
-  // initial seed x,y positions for chili
-  addChilis() {
-    this.chilis.push(...[
-      new Chili([200, 100]),
-      new Chili([500, 100]),
-      new Chili([800, 100]),
-      new Chili([800, 300]),
-      new Chili([800, 600]),
-      new Chili([700, 800]),
-      new Chili([400, 800]),
-      new Chili([100, 800]),
-      new Chili([100, 200]),
-      new Chili([100, 500]),
-    ]);
+    for (let i = 18; i < 28; i += 1) {
+      allConveyorBeltItems.push(new Chili(scrambledPositions[i]));
+    }
+    console.log("after conveyor belt");
+    console.log(this.possiblePos);
   }
 
   // context is the 2D canvas
@@ -135,40 +107,26 @@ export default class Board {
     context.clearRect(0, 0, 1000, 1000);
     this.drawBoard(context);
     this.drawTiles(context);
-    this.drawSushis(context);
-    this.drawChilis(context);
+
+    this.drawConveyorBeltItems(context);
     this.drawSushiMonster(context);
   }
 
 
   step() {
+  this.allConveyorBeltItems.forEach((item) => {
+    // subtracting to go upwards until pos[1] reaches 100, then we move to the right
+    if ((item.pos[0] === 100) && (item.pos[1] !== 100)) {
+      item.pos[1] -= 100;
+    } else if ((item.pos[1] === 100) && (item.pos[0] !== 800)) {
+      item.pos[0] += 100;
+    } else if ((item.pos[0] === 800) && (item.pos[1] !== 800)) {
+      item.pos[1] += 100;
+    } else if (item.pos[1] === 800) {
+      item.pos[0] -= 100;
+    }
+  });
 
-    this.sushis.forEach((sushi) => {
-      // subtracting to go upwards until pos[1] reaches 100, then we move to the right
-      if ((sushi.pos[0] === 100) && (sushi.pos[1] !== 100)) {
-        sushi.pos[1] -= 100;
-      } else if ((sushi.pos[1] === 100) && (sushi.pos[0] !== 800)) {
-        sushi.pos[0] += 100;
-      } else if ((sushi.pos[0] === 800) && (sushi.pos[1] !== 800)) {
-        sushi.pos[1] += 100;
-      } else if (sushi.pos[1] === 800) {
-        sushi.pos[0] -= 100;
-      }
-    });
-
-    this.chilis.forEach((chili) => {
-      if ((chili.pos[0] === 100) && (chili.pos[1] !== 100)) {
-        chili.pos[1] -= 100;
-      } else if ((chili.pos[1] === 100) && (chili.pos[0] !== 800)) {
-        chili.pos[0] += 100;
-      } else if ((chili.pos[0] === 800) && (chili.pos[1] !== 800)) {
-        chili.pos[1] += 100;
-      } else if (chili.pos[1] === 800) {
-        chili.pos[0] -= 100;
-      }
-    });
-
-    // event listener for key strokes
   }
 
   drawBoard(context) {
