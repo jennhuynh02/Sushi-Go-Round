@@ -197,9 +197,9 @@ export default class Board {
     }
 
     // draws sushi on the top left and right corner of the grid
-    createPlatter(900, 0);
-    createPlatter(0, 900);
-    createPlatter(0, 0);
-    createPlatter(900, 900);
+    // createPlatter(900, 0);
+    // createPlatter(0, 900);
+    // createPlatter(0, 0);
+    // createPlatter(900, 900);
   }
 }
