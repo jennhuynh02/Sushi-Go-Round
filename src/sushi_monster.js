@@ -33,6 +33,18 @@ export default class SushiMonster {
     });
   }
 
+  // eatItem() {
+  //   document.addEventListener('keydown', (event) => {
+  //     const monster = this;
+  //     const horizontal = monster.pos[0];
+  //     const vertical = monster.pos[1];
+  //     console.log(event.key);
+  //     if (event.keyCode === 37) {
+  //       // alert('Left arrow of keyboard was smashed');
+  //     }
+  //   });
+  // }
+
   drawSushiMonster(context) {
     context.drawImage(SUSHI_MONSTER_IMAGE, this.pos[0], this.pos[1], 100, 100);
   }

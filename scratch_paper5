@@ -1,0 +1,107 @@
+Well.... now it's time to get the sushi monster to eat the sushi
+
+Per sushi eaten, score will increment +1
+Per chili eaten, score will decrement -1
+
+if (item === sushi) {
+  When a sushi is eaten,
+  # score will increment; does not increment if already at 10
+  # item will be cleared off the conveyor belt
+} else if {
+
+}
+
+When a chili is eaten,
+# score will decrement; if score is already at 1
+# game is over when chili is touched
+
+10x10 (1000px by 1000px) board display = [
+  [_,_,_,_,_,_,_,_,_,_],
+  [_,S,C,S,S,C,S,S,C,_], Y100
+  [_,C,_,_,_,_,_,_,S,_],
+  [_,S,_,_,_,_,_,_,C,_],
+  [_,S,_,_,_,_,_,_,S,_],
+  [_,C,_,_,_,_,_,_,S,_],
+  [_,S,_,_,_,_,_,_,C,_],
+  [_,S,_,_,_,_,_,_,S,_],
+  [_,C,S,S,C,S,S,C,S,_], Y800
+  [_,_,_,_,_,_,_,_,_,_]
+] X100 ---------> X800
+
+
+1.  Add spacebar event listener... spacebar triggers... sushi position check?
+- space bar checks if there is an item at the position adjacent to it...
+
+#if monster is eating sushi on the left side, 
+ -monster should have the same y axis as the item
+ -monster should have +100px difference between x axis
+ *if sushi/chili[-100,y] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+#if monster is eating sushi on the right side,
+  -monster should have the same y axis as the item,
+  -monster should have -100px difference between x axis
+ *if sushi/chili[+100,y] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+
+#if monster is eating sushi at the top,
+ - monster should have the same x axis at the item,
+ - monster should have +100px difference between y axis
+  *if sushi/chili[x,-100] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+#if monster is eating sushi at the bottom,
+ - monster should have the same x axis at the item,
+ - monster should have -100px difference between y axis
+  *if sushi/chili[x,+100] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+
+allConveyorBeltItems <-- delete from this array, if the position matches
+
+eatItem would be called inside of the event listener
+
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    event.preventDefault();
+    // alert('Monster is attempting to eat!');
+    eatItem();
+  }
+});
+
+left
+ *if sushi/chili[-100,y] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+right
+ *if sushi/chili[+100,y] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+top
+  *if sushi/chili[x,-100] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+down
+  *if sushi/chili[x,+100] <-- if item has that position, that item will be cleared and score will be changed depending on what that item is
+
+
+  eatItem() {
+    const { sushiMonster,allConveyorBeltItems } = this;
+    const monster = sushiMonster[0];
+    const horizontal = monster.pos[0];
+    const vertical = monster.pos[1];
+    
+    allConveyorBeltItems.forEach((item, index) => {
+      if (item.pos === [horizontal - 100, vertical]
+      || item.pos === [horizontal + 100, vertical]
+      || item.pos === [horizontal, vertical - 100]
+      || item.pos === [horizontal, vertical + 100]) {
+        allConveyorBeltItems.splice(index,1 )
+      }
+    })
+  }
+
+  #I know this is Ruby code, chill out..
+
+    if allConveyorBeltItems.include?(item.pos[horizontal - 100, vertical]) eats left
+    if allConveyorBeltItems.include?(item.pos[horizontal + 100, vertical]) eats right
+    if allConveyorBeltItems.include?(item.pos[horizontal, vertical - 100]) eats right
+    if allConveyorBeltItems.include?(item.pos[horizontal, vertical + 100]) eats right
+    ---> then delete this item out of the allConveyorBeltItems so that it won't be drawn
+    ---> and depending on if it's a sushi/chili += 1 point from the score bar :)
+

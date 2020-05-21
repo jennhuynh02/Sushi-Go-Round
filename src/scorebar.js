@@ -10,7 +10,6 @@ export default class ScoreBar {
 
   drawScore(context) {
     const { num, scorebarXaxis } = this;
-    console.log(scorebarXaxis);
     if (num > 0 && num < 6) {
       context.fillStyle = 'red';
       context.fillRect(300, 40, scorebarXaxis[num], 20);

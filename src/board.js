@@ -21,13 +21,21 @@ export default class Board {
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
-    this.score = 5;
+    this.score = 4;
     this.scorebar = [];
     this.allPossiblePos();
     this.addItemsOntoConveyorBelt();
     this.addSushiMonster();
     this.addTiles();
     this.addScoreBar();
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        alert('Monster is attempting to eat!');
+        this.eatItem();
+      }
+    });
   }
 
   drawConveyorBeltItems(context) {
@@ -60,7 +68,6 @@ export default class Board {
 
   addScoreBar() {
     const { score } = this;
-    console.log(score);
     this.scorebar.push(new ScoreBar(score));
   }
 
@@ -123,6 +130,24 @@ export default class Board {
     this.drawScoreBar(context);
   }
 
+  eatItem() {
+    const { sushiMonster, allConveyorBeltItems } = this;
+    const monster = sushiMonster[0];
+    const horizontal = monster.pos[0];
+    const vertical = monster.pos[1];
+    console.log(allConveyorBeltItems);
+
+    allConveyorBeltItems.forEach((item, index) => {
+      const left = item.pos[0];
+      const right = item.pos[1];
+      if (((left === horizontal - 100) && (right === vertical))
+      || ((left === horizontal + 100) && (right === vertical))
+      || ((right === vertical - 100) && (left === horizontal))
+      || ((right === vertical + 100) && (left === horizontal))) {
+        allConveyorBeltItems.splice(index, 1);
+      }
+    });
+  }
 
   step() {
     this.allConveyorBeltItems.forEach((item) => {
@@ -138,6 +163,8 @@ export default class Board {
       }
     });
   }
+
+
 
   drawBoard(context) {
     const { tileSize } = this;
