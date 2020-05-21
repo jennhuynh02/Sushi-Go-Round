@@ -4,6 +4,7 @@ CHILI_IMAGE.src = '../assets/chili.png';
 export default class Chili {
   constructor(pos) {
     this.pos = pos;
+    this.type = 'chili';
   }
 
   draw(context) {

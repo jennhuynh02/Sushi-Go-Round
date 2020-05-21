@@ -21,7 +21,7 @@ export default class Board {
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
-    this.score = 4;
+    this.score = [4];
     this.scorebar = [];
     this.allPossiblePos();
     this.addItemsOntoConveyorBelt();
@@ -32,7 +32,6 @@ export default class Board {
     document.addEventListener('keydown', (event) => {
       if (event.key === ' ') {
         event.preventDefault();
-        alert('Monster is attempting to eat!');
         this.eatItem();
       }
     });
@@ -68,7 +67,8 @@ export default class Board {
 
   addScoreBar() {
     const { score } = this;
-    this.scorebar.push(new ScoreBar(score));
+    console.log(score[0]);
+    this.scorebar.push(new ScoreBar(score[0]));
   }
 
   allPossiblePos() {
@@ -131,11 +131,10 @@ export default class Board {
   }
 
   eatItem() {
-    const { sushiMonster, allConveyorBeltItems } = this;
+    const { sushiMonster, allConveyorBeltItems, score, scorebar } = this;
     const monster = sushiMonster[0];
     const horizontal = monster.pos[0];
     const vertical = monster.pos[1];
-    console.log(allConveyorBeltItems);
 
     allConveyorBeltItems.forEach((item, index) => {
       const left = item.pos[0];
@@ -144,7 +143,19 @@ export default class Board {
       || ((left === horizontal + 100) && (right === vertical))
       || ((right === vertical - 100) && (left === horizontal))
       || ((right === vertical + 100) && (left === horizontal))) {
+        console.log(item.type);
+        if ((item.type === 'sushi') && (score[0] !== 10)) {
+          score[0] += 1;
+        } else if ((item.type === 'chili') && (score[0] !== 1)) {
+          score[0] -= 1;
+        } else if ((item.type === 'chili') && (score[0] === 1)) {
+          alert("Sushi Monster is NOT HAPPY!!!  TRY AGAIN");
+        }
+        console.log(score);
         allConveyorBeltItems.splice(index, 1);
+        console.log(allConveyorBeltItems.length);
+
+        scorebar[0].num = score[0];
       }
     });
   }
