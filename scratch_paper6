@@ -1,0 +1,15 @@
+#make a deep copy of orderedPositions so that black tile positions will not be deleted when conveyor belt food items are eaten
+
+const orderedPositions = this.possiblePos.slice(0)
+
+array = [ [0,0],[1,1],[2,2],[3,3] ]
+const scrambledPositions = [];
+deepCopy (array) {
+  array.forEach( arr => (
+    let mini = []
+    arr.forEach( two => (
+      mini.push(...two[0], two[1])
+      scrambledPositions.push(mini);
+    ))
+  ))
+}

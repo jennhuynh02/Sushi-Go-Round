@@ -55,10 +55,13 @@ export default class Board {
   }
 
   drawTiles(context) {
+
     const { tiles } = this;
+    console.log(tiles.length)
     tiles.forEach((tile) => (
       tile.createTile(context)
-    ));
+      ));
+      console.log(tiles.length)
   }
 
   addSushiMonster() {
@@ -67,6 +70,7 @@ export default class Board {
 
   addScoreBar() {
     const { score } = this;
+    console.log('score');
     console.log(score[0]);
     this.scorebar.push(new ScoreBar(score[0]));
   }
@@ -100,10 +104,15 @@ export default class Board {
   }
 
   addItemsOntoConveyorBelt() {
-    const orderedPositions = this.possiblePos.slice(0);
+    const orderedPositions = [];
     const scrambledPositions = [];
     const { allConveyorBeltItems } = this;
-
+    this.possiblePos.forEach((arr) => {
+      let mini = [];
+      mini.push(arr[0]);
+      mini.push(arr[1]);
+      orderedPositions.push(mini);
+    });
     while (orderedPositions.length !== 0) {
       const random = Math.floor(Math.random() * Math.floor(orderedPositions.length));
       scrambledPositions.push(orderedPositions[random]);
@@ -124,7 +133,6 @@ export default class Board {
     context.clearRect(0, 0, 1000, 1000);
     this.drawBoard(context);
     this.drawTiles(context);
-
     this.drawConveyorBeltItems(context);
     this.drawSushiMonster(context);
     this.drawScoreBar(context);
@@ -143,7 +151,6 @@ export default class Board {
       || ((left === horizontal + 100) && (right === vertical))
       || ((right === vertical - 100) && (left === horizontal))
       || ((right === vertical + 100) && (left === horizontal))) {
-        console.log(item.type);
         if ((item.type === 'sushi') && (score[0] !== 10)) {
           score[0] += 1;
         } else if ((item.type === 'chili') && (score[0] !== 1)) {
@@ -151,9 +158,7 @@ export default class Board {
         } else if ((item.type === 'chili') && (score[0] === 1)) {
           alert("Sushi Monster is NOT HAPPY!!!  TRY AGAIN");
         }
-        console.log(score);
         allConveyorBeltItems.splice(index, 1);
-        console.log(allConveyorBeltItems.length);
 
         scorebar[0].num = score[0];
       }
