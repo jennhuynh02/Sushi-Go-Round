@@ -9,6 +9,7 @@
   <link rel="icon" href="./assets/uwu.png" />
   <link type="text/css" rel="stylesheet" href="./dist/index.css" />
   <link type="text/css" rel="stylesheet" href="./dist/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- main.js links Webpack -->
   <script type="application/javascript" src="./dist/main.js" charset="utf-8" defer></script>
 </head>
@@ -16,17 +17,30 @@
 <body id="Sushi-Go-Round">
 
   <!-- Get Element By ID 'game-canvas' -->
+  
   <h1 id="banner">
+    
+    <div id="programmer">
+      <a href="https://github.com/jennhuynh02">  
+        <i class="fa fa-github" style="font-size:48px;color:red"></i>
+      </a>
+      Made by: Jennifer Huynh
+      <a href="https://www.linkedin.com/in/jenniferanhhuynh/">  
+        <i class="fa fa-linkedin-square" style="font-size:48px;color:red"></i>
+      </a>
+    </div>
     <img id="uwu-logo" src="./assets/uwu.png" />
     <img id="gif-logo" src="./assets/sushi10.gif" />
-    Sushi-Go-Round Level:
-    <span id="level"></span>
+      Sushi-Go-Round Level:
+      <span id="level"></span>
     <img id="gif-logo" src="./assets/sushi10.gif" />
     <img id="uwu-logo" src="./assets/uwu.png" />
-  </h1>
-  <p>Score: <span id="points"></span></p>
-  <p id="instructions">Use keyboard arrows to move the sushi monster.  Press the spacebar when next to the conveyor belt to eat the sushi.  Try to main a hunger satisfaction level of green in the scorebar below.  Avoid the chili, once your scorebar is out, you've lost!  Conveyor belt repopulates every level up and gets faster with every level!</p>
-  <canvas id="game-canvas" width="1000px" height="1000px">
+
+
+    </h1>
+    <p id="score">Score: <span id="points"></span></p>
+    <p id="instructions">Use keyboard arrows to move the sushi monster.  Press the spacebar when next to the conveyor belt to eat the sushi.  Try to main a hunger satisfaction level of green in the scorebar below.  Avoid the chili, once your scorebar is out, you've lost!  Conveyor belt repopulates every level up and gets faster with every level!</p>
+    <canvas id="game-canvas" width="1000px" height="1000px">
 </body>
 
 </html>

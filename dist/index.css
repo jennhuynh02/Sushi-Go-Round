@@ -9,15 +9,30 @@
 }
 
 #uwu-logo {
-  height: 125px;
+  height: 75px;
 }
 
 #gif-logo {
-  height: 150px;
+  height: 100px;
+}
+
+#programmer {
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#score {
+  font-size: 25px;
+  font-family: fantasy;
+  margin: 20px;
 }
 
 #instructions {
   width: 600px;
+  font-size: 18px;
 }
 
 #game-canvas {
