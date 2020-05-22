@@ -1,0 +1,20 @@
+Implementations for game feel:
+Functionality:
+1.  Consistent conveyor belt items - when/how?
+ - Refresh belt every minute. √
+
+2.  Calculate dinner time?
+
+3.  Start over button?
+
+4.  Aim? - Highest dinner time?
+
+5.  Dinner time ends when sushi monster consumes too many chilis.
+
+
+Styling:
+1.  Game description
+
+2.  Bar behind health score bar to indicate that it is the scorebar/life meter.
+
+3.  Add music.  

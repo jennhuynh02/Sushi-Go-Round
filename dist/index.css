@@ -16,6 +16,10 @@
   height: 150px;
 }
 
+#instructions {
+  width: 600px;
+}
+
 #game-canvas {
   border: solid 1px grey;
 }

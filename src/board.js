@@ -21,6 +21,7 @@ export default class Board {
     this.sushiMonster = [];
     this.possiblePos = [];
     this.tiles = [];
+    this.points = 0;
     this.score = [4];
     this.scorebar = [];
     this.allPossiblePos();
@@ -33,8 +34,10 @@ export default class Board {
       if (event.key === ' ') {
         event.preventDefault();
         this.eatItem();
+        console.log(this.points);
       }
     });
+    document.getElementById('points').innerHTML = this.points;
   }
 
   drawConveyorBeltItems(context) {
@@ -98,12 +101,17 @@ export default class Board {
     ));
   }
 
+  clearConveyorBelt() {
+    const { allConveyorBeltItems } = this;
+    allConveyorBeltItems.splice(0);
+  }
+
   addItemsOntoConveyorBelt() {
     const orderedPositions = [];
     const scrambledPositions = [];
     const { allConveyorBeltItems } = this;
     this.possiblePos.forEach((arr) => {
-      let mini = [];
+      const mini = [];
       mini.push(arr[0]);
       mini.push(arr[1]);
       orderedPositions.push(mini);
@@ -134,30 +142,38 @@ export default class Board {
   }
 
   eatItem() {
-    const { sushiMonster, allConveyorBeltItems, score, scorebar } = this;
+    const {
+      sushiMonster, allConveyorBeltItems, score, scorebar,
+    } = this;
     const monster = sushiMonster[0];
     const horizontal = monster.pos[0];
     const vertical = monster.pos[1];
 
-    allConveyorBeltItems.forEach((item, index) => {
+    for (let i = 0; i < allConveyorBeltItems.length; i += 1) {
+      const item = allConveyorBeltItems[i]
       const left = item.pos[0];
       const right = item.pos[1];
       if (((left === horizontal - 100) && (right === vertical))
-      || ((left === horizontal + 100) && (right === vertical))
-      || ((right === vertical - 100) && (left === horizontal))
-      || ((right === vertical + 100) && (left === horizontal))) {
+            || ((left === horizontal + 100) && (right === vertical))
+            || ((right === vertical - 100) && (left === horizontal))
+            || ((right === vertical + 100) && (left === horizontal))) {
         if ((item.type === 'sushi') && (score[0] !== 10)) {
           score[0] += 1;
+          this.points += 10;
+        } else if ((item.type === 'sushi') && (score[0] === 10)) {
+          this.points += 10;
         } else if ((item.type === 'chili') && (score[0] !== 1)) {
           score[0] -= 1;
+          this.points -= 10;
         } else if ((item.type === 'chili') && (score[0] === 1)) {
-          alert("Sushi Monster is NOT HAPPY!!!  TRY AGAIN");
+          alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
         }
-        allConveyorBeltItems.splice(index, 1);
-
+        allConveyorBeltItems.splice(i, 1);
+        document.getElementById('points').innerHTML = this.points;
         scorebar[0].num = score[0];
+        break;
       }
-    });
+    }
   }
 
   step() {
@@ -174,8 +190,6 @@ export default class Board {
       }
     });
   }
-
-
 
   drawBoard(context) {
     const { tileSize } = this;
