@@ -1,4 +1,5 @@
 import Sushi from './sushi';
+import SushiOne from './sushi1';
 import Chili from './chili';
 import SushiMonster from './sushi_monster';
 import Tile from './tile';
@@ -122,8 +123,11 @@ export default class Board {
       orderedPositions.splice(random, 1);
     }
 
-    for (let i = 0; i < 18; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       allConveyorBeltItems.push(new Sushi(scrambledPositions[i]));
+    }
+    for (let i = 10; i < 18; i += 1) {
+      allConveyorBeltItems.push(new SushiOne(scrambledPositions[i]));
     }
 
     for (let i = 18; i < 28; i += 1) {
@@ -150,7 +154,7 @@ export default class Board {
     const vertical = monster.pos[1];
 
     for (let i = 0; i < allConveyorBeltItems.length; i += 1) {
-      const item = allConveyorBeltItems[i]
+      const item = allConveyorBeltItems[i];
       const left = item.pos[0];
       const right = item.pos[1];
       if (((left === horizontal - 100) && (right === vertical))
@@ -162,6 +166,11 @@ export default class Board {
           this.points += 10;
         } else if ((item.type === 'sushi') && (score[0] === 10)) {
           this.points += 10;
+        } else if ((item.type === 'sushi1') && (score[0] !== 10)) {
+          score[0] += 1;
+          this.points += 20;
+        } else if ((item.type === 'sushi1') && (score[0] === 10)) {
+          this.points += 20;
         } else if ((item.type === 'chili') && (score[0] !== 1)) {
           score[0] -= 1;
           this.points -= 10;

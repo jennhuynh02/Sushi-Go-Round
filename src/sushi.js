@@ -11,5 +11,5 @@ export default class Sushi {
     context.drawImage(SUSHI_IMAGE, this.pos[0], this.pos[1], 100, 100);
   }
 
-  // creates sushi pieces
+  // creates shrimp sushi pieces
 }
