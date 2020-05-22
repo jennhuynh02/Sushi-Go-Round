@@ -2,6 +2,7 @@ import Sushi from './sushi';
 import SushiOne from './sushi1';
 import SushiTwo from './sushi2';
 import Chili from './chili';
+import Fish from './fish';
 import SushiMonster from './sushi_monster';
 import Tile from './tile';
 import ScoreBar from './scorebar';
@@ -133,10 +134,13 @@ export default class Board {
     for (let i = 12; i < 18; i += 1) {
       allConveyorBeltItems.push(new SushiTwo(scrambledPositions[i]));
     }
-    for (let i = 18; i < 28; i += 1) {
+    for (let i = 18; i < 23; i += 1) {
       allConveyorBeltItems.push(new Chili(scrambledPositions[i]));
     }
-    console.log(allConveyorBeltItems)
+    for (let i = 23; i < 28; i += 1) {
+      allConveyorBeltItems.push(new Fish(scrambledPositions[i]));
+    }
+    console.log(allConveyorBeltItems);
   }
 
   // context is the 2D canvas
@@ -184,6 +188,11 @@ export default class Board {
           score[0] -= 1;
           this.points -= 10;
         } else if ((item.type === 'chili') && (score[0] === 1)) {
+          alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
+        } else if ((item.type === 'fish') && (score[0] !== 1)) {
+          score[0] -= 1;
+          this.points -= 25;
+        } else if ((item.type === 'fish') && (score[0] === 1)) {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
         }
         allConveyorBeltItems.splice(i, 1);
