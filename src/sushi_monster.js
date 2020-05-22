@@ -1,6 +1,6 @@
 // creates SushiMonster piece
 const SUSHI_MONSTER_IMAGE = new Image();
-SUSHI_MONSTER_IMAGE.src = '../assets/lickitung.gif';
+SUSHI_MONSTER_IMAGE.src = './assets/lickitung.gif';
 
 export default class SushiMonster {
   constructor(pos) {

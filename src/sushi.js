@@ -1,5 +1,5 @@
 const SUSHI_IMAGE = new Image();
-SUSHI_IMAGE.src = '../assets/sushi6.png';
+SUSHI_IMAGE.src = './assets/sushi6.png';
 
 export default class Sushi {
   constructor(pos) {

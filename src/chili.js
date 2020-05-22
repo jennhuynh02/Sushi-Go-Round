@@ -1,5 +1,5 @@
 const CHILI_IMAGE = new Image();
-CHILI_IMAGE.src = '../assets/chili.png';
+CHILI_IMAGE.src = './assets/chili.png';
 
 export default class Chili {
   constructor(pos) {
