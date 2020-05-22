@@ -14,7 +14,7 @@ export default class ScoreBar {
       context.fillStyle = 'red';
       context.fillRect(300, 40, scorebarXaxis[num], 20);
     } else if (num >= 6 && num <= 10) {
-      context.fillStyle = 'lightgreen';
+      context.fillStyle = 'green';
       context.fillRect(300, 40, scorebarXaxis[num], 20);
     } else if (num === 0) {
       alert('Sushi Monster is not happy!!!');
