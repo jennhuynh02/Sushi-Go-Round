@@ -18,10 +18,18 @@ export default class ScoreBar {
       // health score in red zone
       context.fillStyle = 'red';
       context.fillRect(300, 40, scorebarXaxis[num], 20);
+
+      context.font = "26px fantasy";
+      context.fillStyle = 'red';
+      context.fillText(`${num * 10}%`, 320 + scorebarXaxis[num], 60);
     } else if (num >= 6 && num <= 10) {
       // health score in red zone
       context.fillStyle = 'green';
       context.fillRect(300, 40, scorebarXaxis[num], 20);
+
+      context.font = "26px fantasy";
+      context.fillStyle = 'red';
+      context.fillText("%", scorebarXaxis[num], 30);
     } else if (num === 0) {
       alert('Sushi Monster is not happy!!!');
     }
