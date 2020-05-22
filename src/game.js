@@ -40,7 +40,7 @@ export default class SushiGoRound {
         this.board.step();
       }, this.beltTime);
       // this is how fast conveyor belt items move
-    }, 10000);
+    }, 40000);
     // this is how fast the convertor belt refreshes
 
     // setTimeout(() => {
