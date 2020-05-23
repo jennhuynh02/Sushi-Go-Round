@@ -6,12 +6,10 @@
 ![demo](demo.gif) 
 
 ## Motivations, Thoughts, and Consideration Behind This Project
-Inspired by the Nintendo 64 Pokemon Stadium minigames, I attempted to recreate the Sushi-Go-Round lickitung game with a minesweeper spin.
+Inspired by the Nintendo 64 Pokemon Stadium minigames, Sushi-Go-Round lickitung is a modern recreation of the Pokemon minigame with a minesweeper spin.
 
 
 ## Features Overview and Technologies Involved
-* Ruby on Rails
-  - A server-side web application framework, built with the Ruby programming language, which was used for our backend development.  The rails framework holds a model, view, controller architecture that allows for communication with the database, handling of requests/changes, and rendering of templates/information to be presented to the user.  Rails included: (1) Active Record for the models portion, which creates objects and persists them to the database for storage, (2) Active Controller for backend actions such as the creation, reading/indexing, updating, and deletion of objects, (3) as well as the use of a domain specific language, known as Jbuilder to render JSON objects for our views portion.  
 * HTML5
   - Canvas, game design, animation.
 * Javascript
