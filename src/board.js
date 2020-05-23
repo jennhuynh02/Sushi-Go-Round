@@ -159,7 +159,6 @@ export default class Board {
     for (let i = 23; i < 28; i += 1) {
       allConveyorBeltItems.push(new Fish(scrambledPositions[i]));
     }
-    console.log(allConveyorBeltItems);
   }
 
   // context is the 2D canvas
