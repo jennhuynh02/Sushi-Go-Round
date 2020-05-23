@@ -9,6 +9,7 @@ export default class SushiGoRound {
     this.level = 0;
     document.getElementById('level').innerHTML = this.level;
     this.restart();
+    // alert('SUSHI-GO-ROUND GAME INSTRUCTIONS: Use keyboard arrows to move the sushi monster.  Press the spacebar when next to the conveyor belt to eat the sushi.  Try to main a hunger satisfaction level of green in the scorebar below.  Avoid the dead fish and chili, once your scorebar is out, you have lost!  Conveyor belt repopulates every level up and gets faster with every level!  Try to move on any of the bombs and game over!');
   }
 
   restart() {

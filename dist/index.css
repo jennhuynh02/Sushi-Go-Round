@@ -25,14 +25,15 @@ a {
 }
 
 #score {
-  font-size: 25px;
+  font-size: 30px;
   font-family: fantasy;
-  margin: 20px;
+  margin: 10px;
 }
 
 #instructions {
   width: 900px;
   font-size: 18px;
+  margin: 10px;
 }
 
 #game-canvas {
