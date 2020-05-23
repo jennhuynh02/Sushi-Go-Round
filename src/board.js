@@ -3,6 +3,7 @@ import SushiOne from './sushi1';
 import SushiTwo from './sushi2';
 import Chili from './chili';
 import Fish from './fish';
+import Bomb from './bomb';
 import SushiMonster from './sushi_monster';
 import Tile from './tile';
 import ScoreBar from './scorebar';
@@ -22,6 +23,7 @@ export default class Board {
     this.numChilis = 10;
     this.allConveyorBeltItems = [];
     this.sushiMonster = [];
+    this.bomb = [];
     this.possiblePos = [];
     this.tiles = [];
     this.points = 0;
@@ -32,6 +34,7 @@ export default class Board {
     this.addSushiMonster();
     this.addTiles();
     this.addScoreBar();
+    this.addBomb();
 
     document.addEventListener('keydown', (event) => {
       if (event.key === ' ') {
@@ -55,6 +58,14 @@ export default class Board {
     sushiMonster[0].drawSushiMonster(context);
   }
 
+  drawBomb(context) {
+    const { bomb } = this;
+    bomb[0].draw(context);
+    bomb[1].draw(context);
+    bomb[2].draw(context);
+    bomb[3].draw(context);
+  }
+
   drawScoreBar(context) {
     const { scorebar } = this;
     scorebar[0].drawScore(context);
@@ -69,6 +80,14 @@ export default class Board {
 
   addSushiMonster() {
     this.sushiMonster.push(new SushiMonster([500, 500]));
+  }
+
+  addBomb() {
+    this.bomb.push(new Bomb([300, 600]),
+    new Bomb([600, 300]),
+    new Bomb([300, 300]),
+    new Bomb([600, 600]),
+    );
   }
 
   addScoreBar() {
@@ -151,6 +170,7 @@ export default class Board {
     this.drawConveyorBeltItems(context);
     this.drawSushiMonster(context);
     this.drawScoreBar(context);
+    this.drawBomb(context);
   }
 
   eatItem() {

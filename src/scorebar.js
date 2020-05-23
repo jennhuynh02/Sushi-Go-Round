@@ -17,7 +17,7 @@ export default class ScoreBar {
     if (num > 0 && num < 6) {
       // health score in red zone
       context.fillStyle = 'red';
-      context.fillRect(300, 40, scorebarXaxis[num], 20);
+      context.fillRect(300, 60, scorebarXaxis[num], 20);
 
       context.font = "26px fantasy";
       context.fillStyle = 'red';
@@ -25,7 +25,7 @@ export default class ScoreBar {
     } else if (num >= 6 && num <= 10) {
       // health score in red zone
       context.fillStyle = 'green';
-      context.fillRect(300, 40, scorebarXaxis[num], 20);
+      context.fillRect(300, 60, scorebarXaxis[num], 20);
 
       context.font = "26px fantasy";
       context.fillStyle = 'green';

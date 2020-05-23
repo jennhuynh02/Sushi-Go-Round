@@ -30,6 +30,13 @@ export default class SushiMonster {
         event.preventDefault();
       // move the SushiMonster to down
       }
+      if ((monster.pos[0] === 300 && monster.pos[1] === 600)
+      || (monster.pos[0] === 600 && monster.pos[1] === 300)
+      || (monster.pos[0] === 300 && monster.pos[1] === 300)
+      || (monster.pos[0] === 600 && monster.pos[1] === 600)) {
+        alert('Sushi Monster has landed on a bomb!!!  TRY AGAIN');
+        document.location.reload();
+      }
     });
   }
 
