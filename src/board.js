@@ -189,11 +189,13 @@ export default class Board {
           this.points -= 10;
         } else if ((item.type === 'chili') && (score[0] === 1)) {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
+          document.location.reload();
         } else if ((item.type === 'fish') && (score[0] !== 1)) {
           score[0] -= 1;
           this.points -= 25;
         } else if ((item.type === 'fish') && (score[0] === 1)) {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
+          document.location.reload();
         }
         allConveyorBeltItems.splice(i, 1);
         document.getElementById('points').innerHTML = this.points;
