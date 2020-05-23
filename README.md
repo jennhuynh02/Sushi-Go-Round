@@ -27,7 +27,7 @@ Altogether, these technologies were incorporated to:
 1. Download the zip from github 
 2. Open terminal
 3. Run "npm start" to run webpack
-4. Open index.html file :)
+4. Open index.html file
 
 
 Code Snippet of Conveyor Belt Items:
