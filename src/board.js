@@ -248,9 +248,8 @@ export default class Board {
     }
 
     function createTile(x, y) {
-      context.beginPath();
-      context.rect(x, y, tileSize, tileSize);
-      context.stroke();
+    context.fillStyle = 'tan';
+    context.fillRect(x, y, 100, 100);
     }
 
     for (let col = 0, x = 0; col < this.cols; col += 1, x += this.tileSize) {
