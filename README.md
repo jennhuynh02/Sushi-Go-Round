@@ -1,4 +1,4 @@
-# Question Aura
+# Sushi-Go-Round
 [Link to live webpage:](https://jennhuynh02.github.io/Sushi-Go-Round/)
 
 ## Demo
