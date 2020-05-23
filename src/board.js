@@ -27,7 +27,7 @@ export default class Board {
     this.possiblePos = [];
     this.tiles = [];
     this.points = 0;
-    this.score = [4];
+    this.score = [10];
     this.scorebar = [];
     this.allPossiblePos();
     this.addItemsOntoConveyorBelt();
