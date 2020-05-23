@@ -12,24 +12,24 @@ export default class ScoreBar {
     const { num, scorebarXaxis } = this;
     // health score bar label
     context.font = "26px fantasy";
-    context.fillStyle = 'green';
-    context.fillText("Health ScoreBar", 400, 30);
+    context.fillStyle = "black";
+    context.fillText("Health Score Bar", 400, 40);
     if (num > 0 && num < 6) {
       // health score in red zone
-      context.fillStyle = 'red';
-      context.fillRect(300, 60, scorebarXaxis[num], 20);
+      context.fillStyle = 'yellow';
+      context.fillRect(300, 60, scorebarXaxis[num], 25);
 
       context.font = "26px fantasy";
-      context.fillStyle = 'red';
-      context.fillText(`${num * 10}%`, 320 + scorebarXaxis[num], 60);
+      context.fillStyle = 'limegreen';
+      context.fillText(`${num * 10}%`, 320 + scorebarXaxis[num], 80);
     } else if (num >= 6 && num <= 10) {
       // health score in red zone
       context.fillStyle = 'green';
-      context.fillRect(300, 60, scorebarXaxis[num], 20);
+      context.fillRect(300, 60, scorebarXaxis[num], 25);
 
       context.font = "26px fantasy";
       context.fillStyle = 'green';
-      context.fillText(`${num * 10}%`, 320 + scorebarXaxis[num], 60);
+      context.fillText(`${num * 10}%`, 320 + scorebarXaxis[num], 80);
     } else if (num === 0) {
       alert('Sushi Monster is not happy!!!');
     }

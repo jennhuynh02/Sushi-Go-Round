@@ -248,7 +248,7 @@ export default class Board {
     }
 
     function createTile(x, y) {
-    context.fillStyle = 'tan';
+    context.fillStyle = 'red';
     context.fillRect(x, y, 100, 100);
     }
 
