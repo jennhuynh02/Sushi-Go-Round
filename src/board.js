@@ -144,19 +144,19 @@ export default class Board {
       orderedPositions.splice(random, 1);
     }
 
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 4; i += 1) {
       allConveyorBeltItems.push(new Sushi(scrambledPositions[i]));
     }
-    for (let i = 6; i < 12; i += 1) {
+    for (let i = 4; i < 8; i += 1) {
       allConveyorBeltItems.push(new SushiOne(scrambledPositions[i]));
     }
-    for (let i = 12; i < 18; i += 1) {
+    for (let i = 8; i < 12; i += 1) {
       allConveyorBeltItems.push(new SushiTwo(scrambledPositions[i]));
     }
-    for (let i = 18; i < 23; i += 1) {
+    for (let i = 12; i < 20; i += 1) {
       allConveyorBeltItems.push(new Chili(scrambledPositions[i]));
     }
-    for (let i = 23; i < 28; i += 1) {
+    for (let i = 20; i < 28; i += 1) {
       allConveyorBeltItems.push(new Fish(scrambledPositions[i]));
     }
   }
@@ -210,7 +210,7 @@ export default class Board {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
           document.location.reload();
         } else if ((item.type === 'fish') && (score[0] !== 1)) {
-          score[0] -= 1;
+          score[0] -= 2;
           this.points -= 25;
         } else if ((item.type === 'fish') && (score[0] === 1)) {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
