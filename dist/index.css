@@ -34,6 +34,8 @@ a {
   width: 900px;
   font-size: 18px;
   margin: 10px;
+  font-family: fantasy;
+  line-height: 1.25;
 }
 
 #game-canvas {
