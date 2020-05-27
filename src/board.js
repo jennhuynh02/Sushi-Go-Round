@@ -183,9 +183,9 @@ export default class Board {
       const item = allConveyorBeltItems[i];
       const left = item.pos[0];
       const right = item.pos[1];
-      if (((left === horizontal - 100) && (right >= vertical - 50 && right <= vertical + 100))
+      if (((left === horizontal - 100) && (right >= vertical - 100 && right <= vertical + 100))
       // sushi on left
-            || ((left === horizontal + 100) && (right >= vertical - 50 && right <= vertical + 100))
+            || ((left === horizontal + 100) && (right >= vertical - 100 && right <= vertical + 100))
       // sushi on right
             || ((right === vertical - 100) && (left >= horizontal - 100 && left <= horizontal + 50))
       // sushi on top
