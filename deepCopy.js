@@ -7,11 +7,8 @@ function deepCopy(array) {
     mini.push(arr[1]);
     scrambledPositions.push(mini);
   });
-  console.log(array);
   array.splice(2);
   array[0][0] = 9;
-  console.log(array);
-  console.log(scrambledPositions);
 }
 
 let array1 = [[0, 0], [1, 1], [2, 2], [3, 3]];

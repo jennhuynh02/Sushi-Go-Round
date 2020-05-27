@@ -40,7 +40,6 @@ export default class Board {
       if (event.key === ' ') {
         event.preventDefault();
         this.eatItem();
-        console.log(this.points);
       }
     });
     document.getElementById('points').innerHTML = this.points;
@@ -144,19 +143,19 @@ export default class Board {
       orderedPositions.splice(random, 1);
     }
 
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 4; i += 1) {
       allConveyorBeltItems.push(new Sushi(scrambledPositions[i]));
     }
-    for (let i = 6; i < 12; i += 1) {
+    for (let i = 4; i < 8; i += 1) {
       allConveyorBeltItems.push(new SushiOne(scrambledPositions[i]));
     }
-    for (let i = 12; i < 18; i += 1) {
+    for (let i = 8; i < 12; i += 1) {
       allConveyorBeltItems.push(new SushiTwo(scrambledPositions[i]));
     }
-    for (let i = 18; i < 23; i += 1) {
+    for (let i = 12; i < 20; i += 1) {
       allConveyorBeltItems.push(new Chili(scrambledPositions[i]));
     }
-    for (let i = 23; i < 28; i += 1) {
+    for (let i = 20; i < 28; i += 1) {
       allConveyorBeltItems.push(new Fish(scrambledPositions[i]));
     }
   }
@@ -184,10 +183,14 @@ export default class Board {
       const item = allConveyorBeltItems[i];
       const left = item.pos[0];
       const right = item.pos[1];
-      if (((left === horizontal - 100) && (right === vertical))
-            || ((left === horizontal + 100) && (right === vertical))
-            || ((right === vertical - 100) && (left === horizontal))
-            || ((right === vertical + 100) && (left === horizontal))) {
+      if (((left === horizontal - 100) && (right >= vertical - 50 && right <= vertical + 100))
+      // sushi on left
+            || ((left === horizontal + 100) && (right >= vertical - 50 && right <= vertical + 100))
+      // sushi on right
+            || ((right === vertical - 100) && (left >= horizontal - 100 && left <= horizontal + 50))
+      // sushi on top
+            || ((right === vertical + 100) && (left >= horizontal - 100 && left <= horizontal + 50))) {
+      // sushi on bottom
         if ((item.type === 'sushi') && (score[0] !== 10)) {
           score[0] += 1;
           this.points += 10;
@@ -210,7 +213,7 @@ export default class Board {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
           document.location.reload();
         } else if ((item.type === 'fish') && (score[0] !== 1)) {
-          score[0] -= 1;
+          score[0] -= 2;
           this.points -= 25;
         } else if ((item.type === 'fish') && (score[0] === 1)) {
           alert('Sushi Monster is NOT HAPPY!!!  TRY AGAIN');
@@ -228,13 +231,13 @@ export default class Board {
     this.allConveyorBeltItems.forEach((item) => {
     // subtracting to go upwards until pos[1] reaches 100, then we move to the right
       if ((item.pos[0] === 100) && (item.pos[1] !== 100)) {
-        item.pos[1] -= 100;
+        item.pos[1] -= 5;
       } else if ((item.pos[1] === 100) && (item.pos[0] !== 800)) {
-        item.pos[0] += 100;
+        item.pos[0] += 5;
       } else if ((item.pos[0] === 800) && (item.pos[1] !== 800)) {
-        item.pos[1] += 100;
+        item.pos[1] += 5;
       } else if (item.pos[1] === 800) {
-        item.pos[0] -= 100;
+        item.pos[0] -= 5;
       }
     });
   }
