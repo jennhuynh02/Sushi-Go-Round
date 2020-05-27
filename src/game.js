@@ -31,7 +31,7 @@ export default class SushiGoRound {
       this.level += 2;
       document.getElementById('level').innerHTML = this.level;
       this.board.addItemsOntoConveyorBelt();
-      this.beltTime -= 2;
+      this.beltTime -= 1;
       clearInterval(interval);
       interval = setInterval(() => {
         this.board.step();
