@@ -40,7 +40,6 @@ export default class Board {
       if (event.key === ' ') {
         event.preventDefault();
         this.eatItem();
-        console.log(this.points);
       }
     });
     document.getElementById('points').innerHTML = this.points;

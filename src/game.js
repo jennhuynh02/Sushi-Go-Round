@@ -22,9 +22,7 @@ export default class SushiGoRound {
 
     this.board.clearConveyorBelt();
     this.board.addItemsOntoConveyorBelt();
-    console.log(this.beltTime);
     let interval = setInterval(() => {
-      console.log("tick1");
       this.board.step();
     }, this.beltTime);
 
@@ -34,10 +32,8 @@ export default class SushiGoRound {
       document.getElementById('level').innerHTML = this.level;
       this.board.addItemsOntoConveyorBelt();
       this.beltTime -= 5;
-      console.log(this.beltTime);
       clearInterval(interval);
       interval = setInterval(() => {
-        console.log("tick2");
         this.board.step();
       }, this.beltTime);
       // this is how fast conveyor belt items move
