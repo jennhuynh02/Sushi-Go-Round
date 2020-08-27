@@ -5,7 +5,7 @@ export default class SushiGoRound {
     this.context = canvas.getContext('2d');
     // set in index.css 1000x1000px
     this.dimensions = { width: canvas.width, height: canvas.height };
-    this.beltTime = 30;
+    this.beltTime = 30000;
     this.level = 0;
     document.getElementById('level').innerHTML = this.level;
     this.restart();
@@ -28,16 +28,16 @@ export default class SushiGoRound {
 
     setInterval(() => {
       this.board.clearConveyorBelt();
-      this.level += 2;
+      this.level += 1;
       document.getElementById('level').innerHTML = this.level;
       this.board.addItemsOntoConveyorBelt();
-      this.beltTime -= 1;
+      this.beltTime > 1500 ? this.beltTime -= 1 : null;
       clearInterval(interval);
       interval = setInterval(() => {
         this.board.step();
       }, this.beltTime);
       // this is how fast conveyor belt items move
-    }, 20000);
+    }, 10000);
     // this is how fast the convertor belt refreshes
 
     // setTimeout(() => {
